@@ -160,7 +160,7 @@ class Queue:
     def __init__(self):
         self.size = 0
         # Why is our DLL a good choice to store our elements?
-        # You have access to the head and the tail
+        # You have access to the head and the tail, O(1) insertion
         # self.storage = ?
         self.storage = DoublyLinkedList()
 

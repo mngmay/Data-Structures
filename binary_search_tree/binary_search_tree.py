@@ -218,7 +218,7 @@ class BinarySearchTree:
                 self.left.insert(value)
             # if greater than or equal to then go right, make a new tree/node if empty, otherwise
             # keep going (recursion)
-        if value > self.value:
+        if value >= self.value:
             if self.right == None:
                 self.right = BinarySearchTree(value)
             else:
@@ -236,10 +236,10 @@ class BinarySearchTree:
     def get_max(self):
         # if right exists, go right
         # otherwise return self.value
-        if self.right:
-            pass
-        else:
-            return self.value
+        current = self
+        while current.right:
+            current = current.right
+        return current.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach

@@ -26,7 +26,7 @@ class LRUCache:
     """
 
     def get(self, key):
-        if key in self.storage.keys():
+        if key in self.storage:
             node = self.storage[key]
             self.cache.move_to_front(node)
             return node.value[key]
@@ -66,3 +66,61 @@ class LRUCache:
             self.cache.add_to_head({key: value})
             # adds to storage
             self.storage[key] = self.cache.head
+
+
+'''
+Lecture solution:
+
+class LRUCache:
+
+    def __init__(self, limit=10):
+        self.limit = limit
+        self.size = 0
+        self.order = DoublyLinkedList()
+        self.storage = dict()
+'''
+'''
+    key == 'value1'
+    value == 'a'
+
+    LinkedListNode??Name prev == some other node, next == a different node value == ('value1', 'a')
+'''
+'''
+
+    def get(self, key):
+        if key in self.storage:
+            node = self.storage[key]
+            self.order.move_to_end(node)
+            # also works but not as readable/type more later self.order.move_to_end(self.storage[key])
+            return node.value[1]
+            # return self.storage[key].value[1]
+        else:
+            return None
+
+    def set(self, key, value):
+        
+        # Check and see if key is in cache
+        if key in self.storage:
+            node = self.storage[key]
+            node.value = (key, value)
+            self.order.move_to_end(node)
+            return 
+        
+        # Check the length, if at limit, delete last. 
+        # If it is in the cache move to front and update value
+        if self.size == self.limit:
+            del self.storage[self.order.head.value[0]]
+            self.order.remove_from_head()
+            # you could do del self.storage[self.order.remove_from_head().value[0]] but it's harder to read so not recommended
+
+            self.size -= 1
+
+
+
+        # If not Add to the front of the cache
+        # Defining tail as most recent and head as oldest
+        self.order.add_to_tail((key, value))
+        self.storage[key] = self.order.tail
+        self.size += 1
+
+'''
