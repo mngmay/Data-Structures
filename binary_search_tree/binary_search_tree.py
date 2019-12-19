@@ -290,13 +290,21 @@ class BinarySearchTree:
             if current_node.right:
                 s.push(current_node.right)
             print(current_node.value)
+
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
     # Print In-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+
+        if self.left:
+            self.left.pre_order_dft(self.left)
+
+        if self.right:
+            self.right.pre_order_dft(self.right)
 
     # Print Post-order recursive DFT
+
     def post_order_dft(self, node):
         pass
