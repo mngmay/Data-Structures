@@ -63,3 +63,65 @@ class BinarySearchTree:
         # if there is a right go right and call cb
         if self.right:
             self.right.for_each(cb)
+
+
+# Lecture solution for Binary Search Tree
+'''
+class BinarySearchTree:
+    def __init(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if not self.left:
+                self.left = BinarySearchTree(value)
+            else:
+                self.left.insert(value)
+        if value >= self.value:
+            if self.right is None:
+                self.right = BinarySearchTree(value)
+            else:
+                self.right.insert(value)
+
+    def contains(self, target):
+        if target == self.value:
+            return True
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
+
+    def get_max(self):
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
+
+    def for_each(self, cb):
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
+    
+    # iterative for_each
+        stack = Stack()
+        stack.push(self) #push the node itself not its value
+
+        while stack.len() > 0:
+            current_node = stack.pop()
+            if current_node.right:
+                stack.push(current_node.right)
+            if current_node.left:
+                stack.push(current_node.left)
+            cb(current_node.value)
+
+'''

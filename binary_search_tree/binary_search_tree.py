@@ -249,10 +249,19 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
 
     def in_order_print(self, node):
-        pass
+
+        # go to the far left until there is no left
+        if self.left:
+            self.left.in_order_print(self.left)
+
+        print(node.value)
+
+        if self.right:
+            self.right.in_order_print(self.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self, node):
         pass
 
