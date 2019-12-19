@@ -263,10 +263,22 @@ class BinarySearchTree:
     # in an iterative breadth first traversal
 
     def bft_print(self, node):
-        pass
+        # make a queue
+        q = Queue()
+        # add in root
+        q.enqueue(self)
+
+        while q.len() > 0:
+            current_node = q.dequeue()
+            if current_node.left:
+                q.enqueue(current_node.left)
+            if current_node.right:
+                q.enqueue(current_node.right)
+            print(current_node.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self, node):
         pass
 
